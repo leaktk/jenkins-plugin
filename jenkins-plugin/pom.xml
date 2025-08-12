@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>5.18</version>
+    <relativePath />
+  </parent>
+
+  <groupId>io.jenkins.plugins</groupId>
+  <artifactId>jenkins-plugin</artifactId>
+  <version>${revision}${changelist}</version>
+  <packaging>hpi</packaging>
+
+  <name>TODO Plugin</name>
+  <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/license/mit/</url>
+    </license>
+  </licenses>
+  <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
+    <connection>scm:git:https://github.com/${gitHubRepo}</connection>
+    <developerConnection>scm:git:https://github.com/${gitHubRepo}</developerConnection>
+    <tag>${scmTag}</tag>
+    <url>https://github.com/${gitHubRepo}</url>
+  </scm>
+
+  <properties>
+    <revision>1.0</revision>
+    <changelist>-SNAPSHOT</changelist>
+
+    <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
+    <jenkins.baseline>2.479</jenkins.baseline>
+    <jenkins.version>${jenkins.baseline}.3</jenkins.version>
+    <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
+
+    <spotless.check.skip>false</spotless.check.skip>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <!-- Pick up common dependencies for the selected LTS line: https://github.com/jenkinsci/bom#usage -->
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-${jenkins.baseline}.x</artifactId>
+        <version>5043.v855ff4819a_0f</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.workflow</groupId>
+      <artifactId>workflow-basic-steps</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.workflow</groupId>
+      <artifactId>workflow-cps</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.workflow</groupId>
+      <artifactId>workflow-durable-task-step</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.workflow</groupId>
+      <artifactId>workflow-job</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jenkins-ci.tools</groupId>
+        <artifactId>maven-hpi-plugin</artifactId>
+        <version>${hpi-plugin.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>download-leaktk-binaries</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <target>
+                <property location="${project.build.outputDirectory}/com/leaktk/binaries" name="leaktk.bin.dir" />
+
+                <mkdir dir="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64" />
+                <get dest="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar.xz" skipexisting="true" src="https://github.com/leaktk/leaktk/releases/download/v0.2.0/leaktk-0.2.0-linux-x86_64.tar.xz" />
+
+                <exec executable="xz" failonerror="false">
+                  <arg value="-d" />
+                  <arg value="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar.xz" />
+                </exec>
+
+                <untar dest="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/" src="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar">
+                  <patternset>
+                    <include name="leaktk" />
+                  </patternset>
+                </untar>
+                <chmod file="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/leaktk" perm="755" />
+
+                <mkdir dir="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64" />
+                <get dest="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar.xz" skipexisting="true" src="https://github.com/leaktk/leaktk/releases/download/v0.2.0/leaktk-0.2.0-linux-arm64.tar.xz" />
+
+                <exec executable="xz" failonerror="false">
+                  <arg value="-d" />
+                  <arg value="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar.xz" />
+                </exec>
+
+                <untar dest="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/" src="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar">
+                  <patternset>
+                    <include name="leaktk" />
+                  </patternset>
+                </untar>
+                <chmod file="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/leaktk" perm="755" />
+
+                <echo message="Leaktk binaries downloaded, extracted, and set executable." />
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
