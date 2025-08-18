@@ -1,0 +1,17 @@
+Started by user unknown or anonymous
+Running as SYSTEM
+Building in workspace /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins5565379722775264309.sh
++ uname -m
+x86_64
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins3481615800712061238.sh
++ file leaktk
+leaktk: XZ compressed data, checksum CRC64
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins15786882320538482665.sh
++ which xz
+/usr/bin/xz
+Starting Leaktk scan...
+Detected x86_64 architecture (amd64). Using com/leaktk/binaries/linux-x86_64/leaktk
+ERROR: Leaktk binary not found in plugin resources at: com/leaktk/binaries/linux-x86_64/leaktk
+ERROR: Leaktk binary could not be found or extracted. Ensure it's bundled correctly.
+Finished: FAILURE

@@ -1,0 +1,46 @@
+Started by user unknown or anonymous
+Running as SYSTEM
+Building in workspace /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins13667618158840144989.sh
++ uname -m
+x86_64
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins13925567767276591625.sh
++ file leaktk
+leaktk: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=d3471e0e9aba2188490fad07beb22f8b62a8fec0, with debug_info, not stripped
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins1466965998492142251.sh
++ which xz
+/usr/bin/xz
+Starting Leaktk scan...
+Detected x86_64 architecture (amd64). Using com/leaktk/binaries/linux-x86_64/leaktk
+Extracting Leaktk binary to: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk
+Leaktk binary extracted and made executable.
+Scanning target: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+Executing command: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[Leaktk-Scan-Job] $ /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[INFO] queueing scan: id="P5e6XiLGA3g"
+[INFO] starting scan: id="P5e6XiLGA3g"
+[INFO] fetching gitleaks patterns
+[INFO] updated gitleaks patterns: hash=ac4a517354ef173ae3b23acf7e0f981cc8ca84dea21ddad4b36088500ebd9dfd
+[INFO] gitleaks: 3 commits scanned.
+[INFO] queueing response: id="P5e6XiLGA3g"
+{"id":"u4BdD0r9O-Y","kind":"ScanResults","request_id":"P5e6XiLGA3g","results":[]}
+Scanning target: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log
+Executing command: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log
+[Leaktk-Scan-Job] $ /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log
+[INFO] queueing scan: id="xtlerdnnk7k"
+[INFO] starting scan: id="xtlerdnnk7k"
+[CRITICAL] scan failed: could not determine gitdir: exit status 128 id="xtlerdnnk7k"
+[INFO] queueing response: id="xtlerdnnk7k"
+[ERROR] scan error: could not determine gitdir id="xtlerdnnk7k"
+{"id":"7tuPJK82y_s","kind":"ScanResults","request_id":"xtlerdnnk7k","results":null,"error":{"code":5,"message":"could not determine gitdir","data":{"id":"xtlerdnnk7k","kind":2,"resource":"/home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log","options":{"arch":"","branch":"","depth":0,"exclusions":null,"fetch_urls":"","local":true,"priority":0,"proxy":"","since":"","staged":false,"unstaged":false}}}}
+Scanning target: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt
+Executing command: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt
+[Leaktk-Scan-Job] $ /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt
+[INFO] queueing scan: id="DLxI2TJNmK0"
+[INFO] starting scan: id="DLxI2TJNmK0"
+[CRITICAL] scan failed: could not determine gitdir: exit status 128 id="DLxI2TJNmK0"
+[INFO] queueing response: id="DLxI2TJNmK0"
+[ERROR] scan error: could not determine gitdir id="DLxI2TJNmK0"
+{"id":"kW3A0of0QZU","kind":"ScanResults","request_id":"DLxI2TJNmK0","results":null,"error":{"code":5,"message":"could not determine gitdir","data":{"id":"DLxI2TJNmK0","kind":2,"resource":"/home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt","options":{"arch":"","branch":"","depth":0,"exclusions":null,"fetch_urls":"","local":true,"priority":0,"proxy":"","since":"","staged":false,"unstaged":false}}}}
+All Leaktk scans completed successfully!
+Finished: SUCCESS

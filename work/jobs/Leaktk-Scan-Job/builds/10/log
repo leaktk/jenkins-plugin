@@ -1,0 +1,37 @@
+Started by user unknown or anonymous
+Running as SYSTEM
+Building in workspace /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins14941862991869112256.sh
++ uname -m
+x86_64
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins11195635444160234507.sh
++ file leaktk
+leaktk: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=d3471e0e9aba2188490fad07beb22f8b62a8fec0, with debug_info, not stripped
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins2309861111459859834.sh
++ which xz
+/usr/bin/xz
+Starting Leaktk scan...
+Detected x86_64 architecture (amd64). Using com/leaktk/binaries/linux-x86_64/leaktk
+Extracting Leaktk binary to: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk
+Leaktk binary extracted and made executable.
+Executing command: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt
+[Leaktk-Scan-Job] $ /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt
+Error: accepts at most 1 arg(s), received 3
+Usage:
+  leaktk scan [flags] <resource>
+
+Flags:
+  -h, --help                 help for scan
+      --id string            an ID for associating responses to requests (default "D4f18kgU0yI")
+  -k, --kind string          the kind of resource to scan (default "GitRepo")
+      --leak-exit-code int   the exit code when leaks are found (default 0)
+  -o, --options string       additional request options formatted as JSON (default "{}")
+
+Global Flags:
+  -c, --config string   config file path
+  -f, --format string   output format [json, human, csv, toml, yaml] (default "json")
+
+[CRITICAL] accepts at most 1 arg(s), received 3
+ERROR: Leaktk scan failed with exit code: 1
+ERROR: Leaktk scan detected issues or encountered an error. See console output for details.
+Finished: FAILURE

@@ -1,0 +1,17 @@
+=== Starting testConfigRoundtrip(io.jenkins.plugins.sample.LeakTKBuilderTest)
+   0.147 [id=35]	INFO	o.jvnet.hudson.test.WarExploder#explode: Picking up existing exploded jenkins.war at /home/alayne/repos/projects/jenkins-plugin/target/jenkins-for-test
+   0.507 [id=35]	INFO	o.jvnet.hudson.test.JenkinsRule#createWebServer2: Running on http://localhost:43809/jenkins/
+   0.688 [id=50]	INFO	jenkins.InitReactorRunner$1#onAttained: Started initialization
+   1.076 [id=59]	INFO	jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+   1.089 [id=60]	INFO	j.b.api.BouncyCastlePlugin#start: /home/alayne/repos/projects/jenkins-plugin/target/tmp/j h98568323555008041/plugins/bouncycastle-api/WEB-INF/optional-lib not found; for non RealJenkinsRule this is fine and can be ignored.
+   1.933 [id=58]	INFO	jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+   1.941 [id=58]	INFO	jenkins.InitReactorRunner$1#onAttained: Started all plugins
+   1.942 [id=49]	INFO	jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+   2.798 [id=56]	INFO	jenkins.InitReactorRunner$1#onAttained: System config loaded
+   2.798 [id=62]	INFO	jenkins.InitReactorRunner$1#onAttained: System config adapted
+   2.798 [id=62]	INFO	jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+   2.800 [id=59]	INFO	jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+   2.930 [id=52]	INFO	jenkins.InitReactorRunner$1#onAttained: Completed initialization
+  29.172 [id=35]	INFO	hudson.lifecycle.Lifecycle#onStatusUpdate: Stopping Jenkins
+  29.237 [id=35]	INFO	hudson.lifecycle.Lifecycle#onStatusUpdate: Jenkins stopped
+  29.342 [id=35]	INFO	o.j.h.t.TemporaryDirectoryAllocator#dispose: deleting /home/alayne/repos/projects/jenkins-plugin/target/tmp/j h98568323555008041

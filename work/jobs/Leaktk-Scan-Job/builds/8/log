@@ -1,0 +1,27 @@
+Started by user unknown or anonymous
+Running as SYSTEM
+Building in workspace /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins1543530488238315874.sh
++ uname -m
+x86_64
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins4860167991307594517.sh
++ file leaktk
+leaktk: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=d3471e0e9aba2188490fad07beb22f8b62a8fec0, with debug_info, not stripped
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins17133832811422173060.sh
++ which xz
+/usr/bin/xz
+Starting Leaktk scan...
+Detected x86_64 architecture (amd64). Using com/leaktk/binaries/linux-x86_64/leaktk
+Extracting Leaktk binary to: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk
+Leaktk binary extracted and made executable.
+Executing command: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[Leaktk-Scan-Job] $ /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[INFO] queueing scan: id="HIoNvaxkqag"
+[INFO] starting scan: id="HIoNvaxkqag"
+[INFO] fetching gitleaks patterns
+[INFO] updated gitleaks patterns: hash=ac4a517354ef173ae3b23acf7e0f981cc8ca84dea21ddad4b36088500ebd9dfd
+[INFO] gitleaks: 2 commits scanned.
+[INFO] queueing response: id="HIoNvaxkqag"
+{"id":"obOvrFk_32g","kind":"ScanResults","request_id":"HIoNvaxkqag","results":[]}
+Leaktk scan completed successfully!
+Finished: SUCCESS

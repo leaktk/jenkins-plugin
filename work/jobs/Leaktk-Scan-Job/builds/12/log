@@ -1,0 +1,39 @@
+Started by user unknown or anonymous
+Running as SYSTEM
+Building in workspace /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins2370818152694490148.sh
++ uname -m
+x86_64
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins10304759643863811710.sh
++ file leaktk
+leaktk: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=d3471e0e9aba2188490fad07beb22f8b62a8fec0, with debug_info, not stripped
+[Leaktk-Scan-Job] $ /bin/sh -xe /tmp/jenkins10416339778670897561.sh
++ which xz
+/usr/bin/xz
+Starting Leaktk scan...
+Detected x86_64 architecture (amd64). Using com/leaktk/binaries/linux-x86_64/leaktk
+Extracting Leaktk binary to: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk
+Leaktk binary extracted and made executable.
+Executing command: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[Leaktk-Scan-Job] $ /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job
+[INFO] queueing scan: id="mkDKHQ14CL4"
+[INFO] starting scan: id="mkDKHQ14CL4"
+[INFO] gitleaks: 3 commits scanned.
+[INFO] queueing response: id="mkDKHQ14CL4"
+{"id":"tR8zmntSlrA","kind":"ScanResults","request_id":"mkDKHQ14CL4","results":[]}
+Scanning target: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log
+Executing command: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan --kind Files /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log
+[Leaktk-Scan-Job] $ /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan --kind Files /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_console_output.log
+[INFO] queueing scan: id="eAiE-SSUM9w"
+[INFO] starting scan: id="eAiE-SSUM9w"
+[INFO] queueing response: id="eAiE-SSUM9w"
+{"id":"oRNyvtpKe8M","kind":"ScanResults","request_id":"eAiE-SSUM9w","results":[]}
+Scanning target: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt
+Executing command: /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan --kind Files /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt
+[Leaktk-Scan-Job] $ /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk scan --kind Files /home/alayne/repos/projects/jenkins-plugin/jenkins-plugin/work/workspace/Leaktk-Scan-Job/leaktk_env_vars.txt
+[INFO] queueing scan: id="7R_kkNRqF38"
+[INFO] starting scan: id="7R_kkNRqF38"
+[INFO] queueing response: id="7R_kkNRqF38"
+{"id":"PA0Pg-pzABI","kind":"ScanResults","request_id":"7R_kkNRqF38","results":[]}
+All Leaktk scans completed successfully!
+Finished: SUCCESS

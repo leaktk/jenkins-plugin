@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <property name="leaktk.bin.dir" location="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries" />
+    <mkdir dir="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-x86_64" />
+    <get skipexisting="true" src="https://github.com/leaktk/leaktk/releases/download/v0.2.0/leaktk-0.2.0-linux-x86_64.tar.xz" dest="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar.xz" />
+    <exec failonerror="false" executable="xz">
+      <arg value="-d" />
+      <arg value="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar.xz" />
+    </exec>
+    <untar src="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar" dest="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-x86_64/">
+      <patternset>
+        <include name="leaktk" />
+      </patternset>
+    </untar>
+    <chmod file="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-x86_64/leaktk" perm="755" />
+    <mkdir dir="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-arm64" />
+    <get skipexisting="true" src="https://github.com/leaktk/leaktk/releases/download/v0.2.0/leaktk-0.2.0-linux-arm64.tar.xz" dest="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar.xz" />
+    <exec failonerror="false" executable="xz">
+      <arg value="-d" />
+      <arg value="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar.xz" />
+    </exec>
+    <untar src="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar" dest="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-arm64/">
+      <patternset>
+        <include name="leaktk" />
+      </patternset>
+    </untar>
+    <chmod file="/home/alayne/repos/projects/jenkins-plugin/target/classes/com/leaktk/binaries/linux-arm64/leaktk" perm="755" />
+    <echo message="Leaktk binaries downloaded, extracted, and set executable." />
+  </target>
+</project>

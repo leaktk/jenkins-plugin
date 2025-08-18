@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Group-Id: io.jenkins.plugins
+Artifact-Id: jenkins-plugin
+Short-Name: jenkins-plugin
+Long-Name: TODO Plugin
+Url: https://github.com/jenkinsci/jenkins-plugin-plugin
+Plugin-Version: 1.0-SNAPSHOT (private-c6464e56-alayne)
+Hudson-Version: 2.479.3
+Jenkins-Version: 2.479.3
+Plugin-Developers: 
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/license/mit/
+Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/jenkins-plugi
+ n-plugin
+Plugin-ScmTag: HEAD
+Plugin-ScmUrl: https://github.com/jenkinsci/jenkins-plugin-plugin
+Implementation-Build: c6464e56ae8be1bd8ad777f2e64ab4353b4988b5
+Libraries: /home/alayne/repos/projects/jenkins-plugin/src/main/resources
+ ,/home/alayne/repos/projects/jenkins-plugin/target/classes
+Resource-Path: /home/alayne/repos/projects/jenkins-plugin/src/main/webap
+ p
+

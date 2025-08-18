@@ -1,0 +1,8 @@
+io/jenkins/plugins/sample/LeakTKBuilder$1.class
+io/jenkins/plugins/sample/LeakTKBuilder.stapler
+META-INF/services/annotations/org.kohsuke.accmod.Restricted
+META-INF/annotations/hudson.Extension.txt
+io/jenkins/plugins/sample/LeakTKBuilder.class
+io/jenkins/plugins/sample/Messages.class
+io/jenkins/plugins/sample/LeakTKBuilder$DescriptorImpl.class
+META-INF/annotations/hudson.Extension
