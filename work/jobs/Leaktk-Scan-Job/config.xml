@@ -25,7 +25,7 @@
       <configuredLocalRules/>
     </hudson.tasks.Shell>
     <io.jenkins.plugins.sample.LeakTKBuilder plugin="jenkins-plugin@1.0-SNAPSHOT">
-      <scanTarget>.</scanTarget>
+      <scanTarget>/home/alayne/test/fake-leaks</scanTarget>
       <additionalArguments></additionalArguments>
       <scanConsoleOutput>true</scanConsoleOutput>
       <scanEnvironmentVariables>true</scanEnvironmentVariables>

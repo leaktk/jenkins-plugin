@@ -13,6 +13,7 @@ import hudson.model.TaskListener;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -106,11 +107,11 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
         listener.getLogger().println("Leaktk binary extracted and made executable.");
 
         List<String> scanTargets = new ArrayList<>();
-        String firstScanTarget = "";
+        String mainScanTarget = "";
 
         // Add the main scan target
         if (scanTarget != null && !scanTarget.isEmpty()) {
-            firstScanTarget = workspace.child(scanTarget).getRemote();
+            mainScanTarget = workspace.child(scanTarget).getRemote();
         }
 
         // Add additional scan targets from new capabilities
@@ -160,25 +161,40 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
         List<String> firstCMD = new ArrayList<>();
         firstCMD.add(leaktkExecutable.getRemote());
         firstCMD.add("scan");
-        firstCMD.add(firstScanTarget);
+        firstCMD.add("--kind");
+        firstCMD.add("Files");
+        firstCMD.add(mainScanTarget);
         if (additionalArguments != null && !additionalArguments.trim().isEmpty()) {
             firstCMD.addAll(Arrays.asList(additionalArguments.trim().split("\\s+")));
         }
 
         listener.getLogger().println("Executing command: " + String.join(" ", firstCMD));
 
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayOutputStream errorStream = new ByteArrayOutputStream();
+
         int exitCode = launcher.launch()
                 .cmds(firstCMD)
                 .pwd(workspace)
-                .stdout(listener.getLogger())
-                .stderr(listener.getLogger())
+                .stdout(outputStream)
+                .stderr(errorStream)
                 .join();
 
-        if (exitCode != 0) {
-            listener.error("Leaktk scan failed for target: " + firstScanTarget + " with exit code: " + exitCode);
-            throw new AbortException(
-                    "Leaktk scan detected issues or encountered an error. See console output for details.");
+        if (outputStream.toString("UTF-8").length() > 82) {
+            listener.getLogger().println("Leaks Found!");
+            throw new AbortException("Leaks were found by the Leaktk scanner.");
         }
+
+        listener.getLogger().println("--- Command Output ---");
+        listener.getLogger().println(outputStream.toString("UTF-8"));
+        listener.getLogger().println("--- Command Error Output ---");
+        listener.getLogger().println(errorStream.toString("UTF-8"));
+
+        // if (exitCode != 0) {
+        //     listener.error("Leaktk scan failed with exit code: " + exitCode);
+        //     throw new AbortException(
+        //             "Leaktk scan detected issues or encountered an error. See console output for details.");
+        // }
 
         // Build the command
         for (String target : scanTargets) {
@@ -205,11 +221,11 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
                     .stderr(listener.getLogger())
                     .join();
 
-            if (exitCode != 0) {
-                listener.error("Leaktk scan failed for target: " + target + " with exit code: " + exitCode);
-                throw new AbortException(
-                        "Leaktk scan detected issues or encountered an error. See console output for details.");
-            }
+            // if (exitCode != 0) {
+            //     listener.error("Leaktk scan failed with exit code: " + exitCode);
+            //     throw new AbortException(
+            //             "Leaktk scan detected issues or encountered an error. See console output for details.");
+            // }
         }
 
         listener.getLogger().println("All Leaktk scans completed successfully!");

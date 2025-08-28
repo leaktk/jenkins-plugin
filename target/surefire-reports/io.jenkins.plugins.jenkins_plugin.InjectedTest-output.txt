@@ -1,58 +1,58 @@
-Aug 18, 2025 12:40:03 PM org.jvnet.hudson.test.WarExploder explode
+Aug 26, 2025 1:04:23 PM org.jvnet.hudson.test.WarExploder explode
 INFO: Exploding /home/alayne/.m2/repository/org/jenkins-ci/main/jenkins-war/2.479.3/jenkins-war-2.479.3.war into /home/alayne/repos/projects/jenkins-plugin/target/jenkins-for-test
-Aug 18, 2025 12:40:05 PM org.eclipse.jetty.ee9.nested.ContextHandler setContextPath
+Aug 26, 2025 1:04:24 PM org.eclipse.jetty.ee9.nested.ContextHandler setContextPath
 WARNING: Empty contextPath
-Aug 18, 2025 12:40:05 PM org.eclipse.jetty.server.Server doStart
+Aug 26, 2025 1:04:24 PM org.eclipse.jetty.server.Server doStart
 INFO: jetty-12.0.22; built: 2025-06-02T15:25:31.946Z; git: 335c9ab44a5591f0ea941bf350e139b8c4f5537c; jvm 21.0.8+9
-Aug 18, 2025 12:40:05 PM org.eclipse.jetty.ee9.webapp.StandardDescriptorProcessor visitServlet
+Aug 26, 2025 1:04:24 PM org.eclipse.jetty.ee9.webapp.StandardDescriptorProcessor visitServlet
 INFO: NO JSP Support for /, did not find org.eclipse.jetty.ee9.jsp.JettyJspServlet
-Aug 18, 2025 12:40:05 PM org.eclipse.jetty.session.DefaultSessionIdManager doStart
+Aug 26, 2025 1:04:24 PM org.eclipse.jetty.session.DefaultSessionIdManager doStart
 INFO: Session workerName=node0
-Aug 18, 2025 12:40:05 PM org.eclipse.jetty.server.handler.ContextHandler doStart
-INFO: Started oeje9n.ContextHandler$CoreContextHandler@476fe690{Jenkins v2.479.3,/,b=file:///home/alayne/repos/projects/jenkins-plugin/target/jenkins-for-test/,a=AVAILABLE,h=oeje9n.ContextHandler$CoreContextHandler$CoreToNestedHandler@7a0e7ecd{STARTED}}
-Aug 18, 2025 12:40:05 PM org.eclipse.jetty.server.AbstractConnector doStart
-INFO: Started ServerConnector@620c8641{HTTP/1.1, (http/1.1)}{localhost:46707}
-Aug 18, 2025 12:40:05 PM org.eclipse.jetty.server.Server doStart
-INFO: Started oejs.Server@468be356{STARTING}[12.0.22,sto=0] @2586ms
-Aug 18, 2025 12:40:05 PM org.jvnet.hudson.test.HudsonTestCase createWebServer2
-INFO: Running on http://localhost:46707/
-Aug 18, 2025 12:40:05 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:24 PM org.eclipse.jetty.server.handler.ContextHandler doStart
+INFO: Started oeje9n.ContextHandler$CoreContextHandler@e84fb85{Jenkins v2.479.3,/,b=file:///home/alayne/repos/projects/jenkins-plugin/target/jenkins-for-test/,a=AVAILABLE,h=oeje9n.ContextHandler$CoreContextHandler$CoreToNestedHandler@68a4dcc6{STARTED}}
+Aug 26, 2025 1:04:24 PM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@7fdab70c{HTTP/1.1, (http/1.1)}{localhost:35653}
+Aug 26, 2025 1:04:24 PM org.eclipse.jetty.server.Server doStart
+INFO: Started oejs.Server@37ce3644{STARTING}[12.0.22,sto=0] @1905ms
+Aug 26, 2025 1:04:24 PM org.jvnet.hudson.test.HudsonTestCase createWebServer2
+INFO: Running on http://localhost:35653/
+Aug 26, 2025 1:04:24 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Started initialization
-Aug 18, 2025 12:40:06 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:24 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Listed all plugins
-Aug 18, 2025 12:40:06 PM jenkins.bouncycastle.api.BouncyCastlePlugin start
-INFO: /home/alayne/repos/projects/jenkins-plugin/target/tmp/j h13801608062837876408/plugins/bouncycastle-api/WEB-INF/optional-lib not found; for non RealJenkinsRule this is fine and can be ignored.
-Aug 18, 2025 12:40:06 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:24 PM jenkins.bouncycastle.api.BouncyCastlePlugin start
+INFO: /home/alayne/repos/projects/jenkins-plugin/target/tmp/j h11139769346607389750/plugins/bouncycastle-api/WEB-INF/optional-lib not found; for non RealJenkinsRule this is fine and can be ignored.
+Aug 26, 2025 1:04:25 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Prepared all plugins
-Aug 18, 2025 12:40:06 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:25 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Started all plugins
-Aug 18, 2025 12:40:06 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:25 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Augmented all extensions
-Aug 18, 2025 12:40:08 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:26 PM jenkins.InitReactorRunner$1 onAttained
 INFO: System config loaded
-Aug 18, 2025 12:40:08 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:26 PM jenkins.InitReactorRunner$1 onAttained
 INFO: System config adapted
-Aug 18, 2025 12:40:08 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:26 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Loaded all jobs
-Aug 18, 2025 12:40:08 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:26 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Configuration for all jobs updated
-Aug 18, 2025 12:40:08 PM jenkins.InitReactorRunner$1 onAttained
+Aug 26, 2025 1:04:26 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Completed initialization
-Aug 18, 2025 12:40:08 PM org.eclipse.jetty.server.Server doStart
+Aug 26, 2025 1:04:26 PM org.eclipse.jetty.server.Server doStart
 INFO: jetty-12.0.22; built: 2025-06-02T15:25:31.946Z; git: 335c9ab44a5591f0ea941bf350e139b8c4f5537c; jvm 21.0.8+9
-Aug 18, 2025 12:40:08 PM org.eclipse.jetty.server.handler.ContextHandler doStart
-INFO: Started oeje9n.ContextHandler$CoreContextHandler@6c8dbf56{ROOT,/,b=null,a=AVAILABLE,h=oeje9n.ContextHandler$CoreContextHandler$CoreToNestedHandler@493b01ef{STARTED}}
-Aug 18, 2025 12:40:08 PM org.eclipse.jetty.server.AbstractConnector doStart
-INFO: Started ServerConnector@36c2d629{HTTP/1.1, (http/1.1)}{0.0.0.0:43751}
-Aug 18, 2025 12:40:08 PM org.eclipse.jetty.server.Server doStart
-INFO: Started oejs.Server@19b206ee{STARTING}[12.0.22,sto=0] @5793ms
-Aug 18, 2025 12:40:09 PM org.eclipse.jetty.server.Server doStop
-INFO: Stopped oejs.Server@468be356{STOPPING}[12.0.22,sto=0]
-Aug 18, 2025 12:40:09 PM org.eclipse.jetty.server.AbstractConnector doStop
-INFO: Stopped ServerConnector@620c8641{HTTP/1.1, (http/1.1)}{localhost:0}
-Aug 18, 2025 12:40:09 PM hudson.lifecycle.Lifecycle onStatusUpdate
+Aug 26, 2025 1:04:26 PM org.eclipse.jetty.server.handler.ContextHandler doStart
+INFO: Started oeje9n.ContextHandler$CoreContextHandler@309cedb6{ROOT,/,b=null,a=AVAILABLE,h=oeje9n.ContextHandler$CoreContextHandler$CoreToNestedHandler@3b95a6db{STARTED}}
+Aug 26, 2025 1:04:26 PM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@3bf54172{HTTP/1.1, (http/1.1)}{0.0.0.0:44163}
+Aug 26, 2025 1:04:26 PM org.eclipse.jetty.server.Server doStart
+INFO: Started oejs.Server@5b5dce5c{STARTING}[12.0.22,sto=0] @4204ms
+Aug 26, 2025 1:04:27 PM org.eclipse.jetty.server.Server doStop
+INFO: Stopped oejs.Server@37ce3644{STOPPING}[12.0.22,sto=0]
+Aug 26, 2025 1:04:27 PM org.eclipse.jetty.server.AbstractConnector doStop
+INFO: Stopped ServerConnector@7fdab70c{HTTP/1.1, (http/1.1)}{localhost:0}
+Aug 26, 2025 1:04:27 PM hudson.lifecycle.Lifecycle onStatusUpdate
 INFO: Stopping Jenkins
-Aug 18, 2025 12:40:09 PM hudson.lifecycle.Lifecycle onStatusUpdate
+Aug 26, 2025 1:04:27 PM hudson.lifecycle.Lifecycle onStatusUpdate
 INFO: Jenkins stopped
-Aug 18, 2025 12:40:09 PM org.jvnet.hudson.test.TemporaryDirectoryAllocator dispose
-INFO: deleting /home/alayne/repos/projects/jenkins-plugin/target/tmp/j h13801608062837876408
+Aug 26, 2025 1:04:27 PM org.jvnet.hudson.test.TemporaryDirectoryAllocator dispose
+INFO: deleting /home/alayne/repos/projects/jenkins-plugin/target/tmp/j h11139769346607389750

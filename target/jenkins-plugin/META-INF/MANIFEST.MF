@@ -10,7 +10,7 @@ Artifact-Id: jenkins-plugin
 Short-Name: jenkins-plugin
 Long-Name: TODO Plugin
 Url: https://github.com/jenkinsci/jenkins-plugin-plugin
-Plugin-Version: 1.0-SNAPSHOT (private-c6464e56-alayne)
+Plugin-Version: 1.0-SNAPSHOT (private-98459213-alayne)
 Hudson-Version: 2.479.3
 Jenkins-Version: 2.479.3
 Plugin-Developers: 
@@ -20,5 +20,5 @@ Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/jenkins-plugi
  n-plugin
 Plugin-ScmTag: HEAD
 Plugin-ScmUrl: https://github.com/jenkinsci/jenkins-plugin-plugin
-Implementation-Build: c6464e56ae8be1bd8ad777f2e64ab4353b4988b5
+Implementation-Build: 98459213c36b96ea2afae69655df7a1ff46237cb
 

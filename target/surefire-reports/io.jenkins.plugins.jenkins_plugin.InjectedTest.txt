@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: io.jenkins.plugins.jenkins_plugin.InjectedTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.173 s -- in io.jenkins.plugins.jenkins_plugin.InjectedTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.427 s -- in io.jenkins.plugins.jenkins_plugin.InjectedTest
