@@ -148,7 +148,8 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
             scanTargets.add(artifactsDir.getRemote());
         }
 
-        List<String> firstCMD = Arrays.asList(leaktkExecutable.getRemote(), "scan", "--kind", "Files", mainScanTarget);
+        List<String> firstCMD = Arrays.asList(
+                leaktkExecutable.getRemote(), "scan", "--kind", "Files", mainScanTarget, "--leak-exit-code", "164");
 
         listener.getLogger().println("Executing command: " + String.join(" ", firstCMD));
 
@@ -162,11 +163,11 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
                 .stderr(errorStream)
                 .join();
 
-        if (outputStream.toString("UTF-8").length() > 82) {
+        if (exitCode == 164) {
             listener.getLogger().println("Leaks Found!");
             throw new AbortException("Leaks were found by the Leaktk scanner.");
         }
-
+        listener.getLogger().println("Scanner finished with exit code: " + exitCode);
         listener.getLogger().println("--- Command Output ---");
         listener.getLogger().println(outputStream.toString("UTF-8"));
         listener.getLogger().println("--- Command Error Output ---");
@@ -182,12 +183,8 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
         for (String target : scanTargets) {
             listener.getLogger().println("Scanning target: " + target);
 
-            List<String> cmd = new ArrayList<>();
-            cmd.add(leaktkExecutable.getRemote());
-            cmd.add("scan");
-            cmd.add("--kind");
-            cmd.add("Files");
-            cmd.add(target);
+            List<String> cmd = Arrays.asList(
+                leaktkExecutable.getRemote(), "scan", "--kind", "Files", target, "--leak-exit-code", "164");
 
             listener.getLogger().println("Executing command: " + String.join(" ", cmd));
 
