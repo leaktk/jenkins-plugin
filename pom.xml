@@ -9,8 +9,8 @@
     <relativePath />
   </parent>
 
-  <groupId>io.jenkins.plugins</groupId>
-  <artifactId>jenkins-plugin</artifactId>
+  <groupId>org.leaktk</groupId>
+  <artifactId>jenkins_plugin</artifactId>
   <version>${revision}${changelist}</version>
   <packaging>hpi</packaging>
 
@@ -38,6 +38,8 @@
     <jenkins.version>${jenkins.baseline}.3</jenkins.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
 
+    <leaktk.version>0.2.0</leaktk.version>
+
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
 
@@ -54,6 +56,11 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>org.eclipse.jgit</groupId>
+      <artifactId>org.eclipse.jgit</artifactId>
+      <version>6.8.0.202311291450-r</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -122,37 +129,33 @@
             <phase>generate-resources</phase>
             <configuration>
               <target>
-                <property location="${project.build.outputDirectory}/com/leaktk/binaries" name="leaktk.bin.dir" />
+                <property location="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries" name="leaktk.bin.dir" />
 
-                <mkdir dir="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64" />
-                <get dest="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar.xz" skipexisting="true" src="https://github.com/leaktk/leaktk/releases/download/v0.2.0/leaktk-0.2.0-linux-x86_64.tar.xz" />
+                <mkdir dir="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-x86_64" />
+                <get dest="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-x86_64/leaktk-${leaktk.version}-linux-x86_64.tar.xz" skipexisting="true" src="https://github.com/leaktk/leaktk/releases/download/v${leaktk.version}/leaktk-${leaktk.version}-linux-x86_64.tar.xz" />
 
-                <exec executable="xz" failonerror="false">
-                  <arg value="-d" />
-                  <arg value="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar.xz" />
+                <exec executable="tar" failonerror="true">
+                  <arg value="-C" />
+                  <arg value="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-x86_64/" />
+                  <arg value="-xJf" />
+                  <arg value="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-x86_64/leaktk-${leaktk.version}-linux-x86_64.tar.xz" />
+                  <arg value="leaktk" />
                 </exec>
+                <chmod file="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-x86_64/leaktk" perm="755" />
+                <delete file="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-x86_64/leaktk-${leaktk.version}-linux-x86_64.tar.xz" />
 
-                <untar dest="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/" src="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/leaktk-0.1.0-linux-x86_64.tar">
-                  <patternset>
-                    <include name="leaktk" />
-                  </patternset>
-                </untar>
-                <chmod file="${project.build.outputDirectory}/com/leaktk/binaries/linux-x86_64/leaktk" perm="755" />
+                <mkdir dir="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-arm64" />
+                <get dest="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-arm64/leaktk-${leaktk.version}-linux-arm64.tar.xz" skipexisting="true" src="https://github.com/leaktk/leaktk/releases/download/v${leaktk.version}/leaktk-${leaktk.version}-linux-arm64.tar.xz" />
 
-                <mkdir dir="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64" />
-                <get dest="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar.xz" skipexisting="true" src="https://github.com/leaktk/leaktk/releases/download/v0.2.0/leaktk-0.2.0-linux-arm64.tar.xz" />
-
-                <exec executable="xz" failonerror="false">
-                  <arg value="-d" />
-                  <arg value="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar.xz" />
+                <exec executable="tar" failonerror="true">
+                  <arg value="-C" />
+                  <arg value="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-arm64/" />
+                  <arg value="-xJf" />
+                  <arg value="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-arm64/leaktk-${leaktk.version}-linux-arm64.tar.xz" />
+                  <arg value="leaktk" />
                 </exec>
-
-                <untar dest="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/" src="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/leaktk-0.1.0-linux-arm64.tar">
-                  <patternset>
-                    <include name="leaktk" />
-                  </patternset>
-                </untar>
-                <chmod file="${project.build.outputDirectory}/com/leaktk/binaries/linux-arm64/leaktk" perm="755" />
+                <chmod file="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-arm64/leaktk" perm="755" />
+                <delete file="${project.build.outputDirectory}/org/leaktk/jenkins_plugin/binaries/linux-arm64/leaktk-${leaktk.version}-linux-arm64.tar.xz" />
 
                 <echo message="Leaktk binaries downloaded, extracted, and set executable." />
               </target>

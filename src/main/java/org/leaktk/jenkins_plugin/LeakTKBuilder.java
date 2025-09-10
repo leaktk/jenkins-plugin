@@ -1,4 +1,4 @@
-package io.jenkins.plugins.sample;
+package org.leaktk.jenkins_plugin;
 
 import hudson.AbortException;
 import hudson.EnvVars;
@@ -60,10 +60,10 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
         FilePath leaktkExecutable;
 
         if ("amd64".equalsIgnoreCase(osArch) || "x86_64".equalsIgnoreCase(osArch)) {
-            leaktkResourcePath = "com/leaktk/binaries/linux-x86_64/leaktk";
+            leaktkResourcePath = "org/leaktk/jenkins_plugin/binaries/linux-x86_64/leaktk";
             listener.getLogger().println("Detected x86_64 architecture (" + osArch + "). Using " + leaktkResourcePath);
         } else if ("aarch64".equalsIgnoreCase(osArch)) {
-            leaktkResourcePath = "com/leaktk/binaries/linux-aarch64/leaktk"; // Corrected binary path
+            leaktkResourcePath = "org/leaktk/jenkins_plugin/binaries/linux-aarch64/leaktk"; // Corrected binary path
             listener.getLogger().println("Detected aarch64 architecture (" + osArch + "). Using " + leaktkResourcePath);
         } else {
             listener.error("Unsupported OS architecture for Leaktk scanner: " + osArch);
@@ -184,7 +184,7 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
             listener.getLogger().println("Scanning target: " + target);
 
             List<String> cmd = Arrays.asList(
-                leaktkExecutable.getRemote(), "scan", "--kind", "Files", target, "--leak-exit-code", "164");
+                    leaktkExecutable.getRemote(), "scan", "--kind", "Files", target, "--leak-exit-code", "164");
 
             listener.getLogger().println("Executing command: " + String.join(" ", cmd));
 
