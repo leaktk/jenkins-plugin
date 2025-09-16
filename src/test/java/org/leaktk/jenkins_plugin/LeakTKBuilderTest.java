@@ -35,7 +35,7 @@ public class LeakTKBuilderTest {
         File tempDirFile = tempDir.toFile();
         String scanPath = tempDirFile.getAbsolutePath();
 
-        LeakTKBuilder builder = new LeakTKBuilder(scanPath, true, false);
+        LeakTKBuilder builder = new LeakTKBuilder(true, true, true, true, true);
         project.getBuildersList().add(builder);
 
         // Perform the config roundtrip: save and reload the project
@@ -44,9 +44,11 @@ public class LeakTKBuilderTest {
         // Assert that the reloaded builder has the same values
         LeakTKBuilder afterRoundtrip = project.getBuildersList().get(LeakTKBuilder.class);
         assertNotNull("Builder should not be null after roundtrip", afterRoundtrip);
-        assertEquals("Scan target should match", scanPath, afterRoundtrip.getScanTarget());
+        assertEquals("Scan source should match", true, afterRoundtrip.isScanSource());
+        assertEquals("Scan test output should match", true, afterRoundtrip.isScanTest());
+        assertEquals("Scan target variables should match", true, afterRoundtrip.isScanTarget());
         assertEquals("Scan console output should match", true, afterRoundtrip.isScanConsoleOutput());
-        assertEquals("Scan environment variables should match", false, afterRoundtrip.isScanEnvironmentVariables());
+        assertEquals("Scan environment variables should match", true, afterRoundtrip.isScanEnvironmentVariables());
 
         // Clean up the temporary directory after the test.
         // It's good practice to ensure temp directories are deleted.
@@ -72,7 +74,7 @@ public class LeakTKBuilderTest {
 
         // Create a project and add the builder with test values
         FreeStyleProject project = jenkins.createFreeStyleProject();
-        LeakTKBuilder builder = new LeakTKBuilder(".", true, false);
+        LeakTKBuilder builder = new LeakTKBuilder(true, true, true, true, false);
         project.getBuildersList().add(builder);
 
         // Perform the build, passing our mock launcher
@@ -82,11 +84,11 @@ public class LeakTKBuilderTest {
         jenkins.assertBuildStatusSuccess(build);
 
         String consoleOutput = jenkins.getLog(build);
-        assertTrue(consoleOutput.contains("Starting Leaktk scan..."));
+        assertTrue(consoleOutput.contains("Starting LeakTK scan..."));
         assertTrue(consoleOutput.contains("Detected x86_64 architecture (amd64)."));
-        assertTrue(consoleOutput.contains("Leaktk binary extracted and made executable."));
+        assertTrue(consoleOutput.contains("LeakTK binary extracted and made executable."));
         assertTrue(consoleOutput.contains("Executing command: "));
-        assertTrue(consoleOutput.contains("All Leaktk scans completed successfully!"));
+        assertTrue(consoleOutput.contains("All LeakTK scans completed successfully!"));
     }
 
     @Test
@@ -109,7 +111,7 @@ public class LeakTKBuilderTest {
         }
 
         // Use the path of the cloned repository for the builder
-        LeakTKBuilder builder = new LeakTKBuilder(tempDirFile.getAbsolutePath(), false, false);
+        LeakTKBuilder builder = new LeakTKBuilder(true, true, true, true, false);
         project.getBuildersList().add(builder);
         FreeStyleBuild build = project.scheduleBuild2(0).get();
 
@@ -140,7 +142,7 @@ public class LeakTKBuilderTest {
 
         // 2. Set up the build and run it
         FreeStyleProject project = jenkins.createFreeStyleProject();
-        LeakTKBuilder builder = new LeakTKBuilder(".", false, false);
+        LeakTKBuilder builder = new LeakTKBuilder(true, true, true, true, false);
         project.getBuildersList().add(builder);
         FreeStyleBuild build = project.scheduleBuild2(0).get();
 
@@ -149,7 +151,7 @@ public class LeakTKBuilderTest {
 
         // 4. Verify the console output contains the expected error message
         String consoleOutput = jenkins.getLog(build);
-        assertTrue(consoleOutput.contains("Unsupported OS architecture for Leaktk scanner: s390x"));
-        assertTrue(consoleOutput.contains("Leaktk scanner does not support this operating system architecture."));
+        assertTrue(consoleOutput.contains("Unsupported OS architecture for LeakTK scanner: s390x"));
+        assertTrue(consoleOutput.contains("LeakTK scanner does not support this operating system architecture."));
     }
 }
