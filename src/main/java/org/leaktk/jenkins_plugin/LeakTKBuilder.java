@@ -53,7 +53,7 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
     @Override
     public void perform(Run<?, ?> run, FilePath workspace, EnvVars env, Launcher launcher, TaskListener listener)
             throws InterruptedException, IOException {
-        listener.getLogger().println("Starting Leaktk scan...");
+        listener.getLogger().println("Starting LeakTK scan...");
 
         String osArch = System.getProperty("os.arch");
         String leaktkResourcePath;
@@ -66,18 +66,18 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
             leaktkResourcePath = "org/leaktk/jenkins_plugin/binaries/linux-aarch64/leaktk"; // Corrected binary path
             listener.getLogger().println("Detected aarch64 architecture (" + osArch + "). Using " + leaktkResourcePath);
         } else {
-            listener.error("Unsupported OS architecture for Leaktk scanner: " + osArch);
-            throw new AbortException("Leaktk scanner does not support this operating system architecture.");
+            listener.error("Unsupported OS architecture for LeakTK scanner: " + osArch);
+            throw new AbortException("LeakTK scanner does not support this operating system architecture.");
         }
 
         leaktkExecutable = workspace.child("leaktk");
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(leaktkResourcePath)) {
             if (is == null) {
-                listener.error("Leaktk binary not found in plugin resources at: " + leaktkResourcePath);
+                listener.error("LeakTK binary not found in plugin resources at: " + leaktkResourcePath);
                 throw new AbortException(
-                        "Leaktk binary could not be found or extracted. Ensure it's bundled correctly.");
+                        "LeakTK binary could not be found or extracted. Ensure it's bundled correctly.");
             }
-            listener.getLogger().println("Extracting Leaktk binary to: " + leaktkExecutable.getRemote());
+            listener.getLogger().println("Extracting LeakTK binary to: " + leaktkExecutable.getRemote());
             leaktkExecutable.copyFrom(is);
         }
 
@@ -94,7 +94,7 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
                 return null;
             }
         });
-        listener.getLogger().println("Leaktk binary extracted and made executable.");
+        listener.getLogger().println("LeakTK binary extracted and made executable.");
 
         List<String> scanTargets = new ArrayList<>();
         String mainScanTarget = "";
@@ -134,14 +134,14 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
 
         // Add test reports and artifacts (these are more complex and require specific configuration)
         // For a simple implementation, you can scan common directories
-        // Leaktk scan test reports from the workspace
+        // LeakTK scan test reports from the workspace
         FilePath testReportDir = workspace.child("target/surefire-reports");
         if (testReportDir.exists()) {
             listener.getLogger().println("Adding test reports for scanning.");
             scanTargets.add(testReportDir.getRemote());
         }
 
-        // Leaktk scan archived artifacts (if they were copied to the workspace)
+        // LeakTK scan archived artifacts (if they were copied to the workspace)
         FilePath artifactsDir = workspace.child("artifacts");
         if (artifactsDir.exists()) {
             listener.getLogger().println("Adding artifacts for scanning.");
@@ -165,7 +165,7 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
 
         if (exitCode == 164) {
             listener.getLogger().println("Leaks Found!");
-            throw new AbortException("Leaks were found by the Leaktk scanner.");
+            throw new AbortException("Leaks were found by the LeakTK scanner.");
         }
         listener.getLogger().println("Scanner finished with exit code: " + exitCode);
         listener.getLogger().println("--- Command Output ---");
@@ -174,9 +174,9 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
         listener.getLogger().println(errorStream.toString("UTF-8"));
 
         // if (exitCode != 0) {
-        //     listener.error("Leaktk scan failed with exit code: " + exitCode);
+        //     listener.error("LeakTK scan failed with exit code: " + exitCode);
         //     throw new AbortException(
-        //             "Leaktk scan detected issues or encountered an error. See console output for details.");
+        //             "LeakTK scan detected issues or encountered an error. See console output for details.");
         // }
 
         // Build the command
@@ -196,13 +196,13 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
                     .join();
 
             // if (exitCode != 0) {
-            //     listener.error("Leaktk scan failed with exit code: " + exitCode);
+            //     listener.error("LeakTK scan failed with exit code: " + exitCode);
             //     throw new AbortException(
-            //             "Leaktk scan detected issues or encountered an error. See console output for details.");
+            //             "LeakTK scan detected issues or encountered an error. See console output for details.");
             // }
         }
 
-        listener.getLogger().println("All Leaktk scans completed successfully!");
+        listener.getLogger().println("All LeakTK scans completed successfully!");
     }
 
     @Override
@@ -220,7 +220,7 @@ public class LeakTKBuilder extends Builder implements SimpleBuildStep {
 
         @Override
         public String getDisplayName() {
-            return "Run Leaktk Scanner";
+            return "Run LeakTK Scanner";
         }
     }
 }
